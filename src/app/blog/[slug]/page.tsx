@@ -22,7 +22,6 @@ type PageProps = {
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-    const POSTS_DIR = path.join(process.cwd(), ARTICLES_PATH);
     const postPaths = await glob(path.join(POSTS_DIR, '**/*.md'));
     return postPaths.map(postPath => {
         return { slug: path.basename(postPath, path.extname(postPath)) }

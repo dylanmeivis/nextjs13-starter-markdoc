@@ -1,6 +1,8 @@
+import { Config } from "@markdoc/markdoc";
+import Callout from "./(blog.components)/callout";
 import Heading from "./(blog.components)/heading";
 
-const config = {
+const config: Config = {
     nodes: {
         paragraph: {
             render: 'Paragraph'
@@ -12,6 +14,17 @@ const config = {
             }
         },
     },
+    tags: {
+        callout: {
+            render: 'Callout',
+            attributes: {
+                title: {
+                    type: String,
+                    default: "default title",
+                },
+            }
+        }
+    }
 };
 
 const components = {
@@ -19,6 +32,7 @@ const components = {
         return <div className="text-base pb-2">{children}</div>
     },
     Heading: Heading,
+    Callout: Callout
 };
 
 export { config, components }
