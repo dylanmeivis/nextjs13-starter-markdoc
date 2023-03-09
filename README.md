@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app), [`Markdoc`](https://markdoc.dev/) and [`Tailwind CSS`](https://tailwindcss.com/).
 
 ## Getting Started
 
@@ -14,25 +14,34 @@ pnpm dev
 
 Open [http://localhost:3000/blog/firstpost](http://localhost:3000/blog/firstpost) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The `app/blog/(articles)` directory is mapped to `/blog/*`. Markdown files in this directory are treated as pages.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+So simply add a markdown file in `app/blog/(articles)` and start writing your content.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Different folder for markdown content
+You can change the folder you want your markdown content to be in by also changing the **ARTICLES_PATH** variable in `app/blog/[slug]/page.tsx`.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Changing rendering of markdown types
+You can change the way an markdown element renders by creating an component and linking it to the type in the `config.markdoc.tsx`. Markdown elements are seen as nodes. See [Markdoc Nodes](https://markdoc.dev/docs/nodes) for more information. In this example an custom rendering is created for the heading element with some Tailwind styling, and custom rendering of the paragraph element inside the `config.markdoc.tsx` file.
+
+### Creating custom elements to use inside the markdown file
+You can also create custom tags seen als components to use in your markdown file. See [Markdoc Tags](https://markdoc.dev/docs/tags) for more information. This example has en callout component with a title attribute that is passed to the component and used.
+
+### frontmatter variables
+On the top of your markdown file you can define frontmatter variables.
+```md
+---
+title: TitleVariable
+---
+```
+These can be used inside your content by referencing them like `{% $frontmatter.title %}.
+In this example these variables are used to dynamically set the metadata of the page. By using the [`generateMetaData` method](https://beta.nextjs.org/docs/api-reference/metadata#generatemetadata:~:text=and%20layouts.-,generateMetadata,-You%20can%20use) and gray-matter to retrieve the variables from the markdown file.
+
+### Static generation
+The method [generateStaticParams](https://beta.nextjs.org/docs/api-reference/generate-static-params) is used to statically generate the routes at build time. Using [Glob](https://www.npmjs.com/package/glob) to search for all the possible routes by scanning the markdown files in the folder specified in the `ARTICLES_PATH`. Exporting the variable `dynamicParams` inside the `[slug]/page.tsx` determines if the page tries to dynamically tries to render a page when it was not statically created at build time if the value is **TRUE**, and redirects the user to the 404 page when the value is **FALSE**.
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about Markdoc, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Markdoc Documentation](https://markdoc.dev/docs/overview) - learn about Next.js features and API.
