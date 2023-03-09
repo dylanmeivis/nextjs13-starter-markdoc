@@ -21,7 +21,7 @@ The `app/blog/(articles)` directory is mapped to `/blog/*`. Markdown files in th
 So simply add a markdown file in `app/blog/(articles)` and start writing your content.
 
 ### Different folder for markdown content
-You can change the folder you want your markdown content to be in by also changing the **ARTICLES_PATH** variable in `app/blog/[slug]/page.tsx`.
+You can change the folder you want your markdown content to be in by also changing the `ARTICLES_PATH` variable in `app/blog/[slug]/page.tsx`.
 
 ### Changing rendering of markdown types
 You can change the way an markdown element renders by creating an component and linking it to the type in the `config.markdoc.tsx`. Markdown elements are seen as nodes. See [Markdoc Nodes](https://markdoc.dev/docs/nodes) for more information. In this example an custom rendering is created for the heading element with some Tailwind styling, and custom rendering of the paragraph element inside the `config.markdoc.tsx` file.
