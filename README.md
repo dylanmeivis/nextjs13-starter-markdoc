@@ -37,10 +37,10 @@ title: TitleVariable
 ---
 ```
 These can be used inside your content by referencing them like `{% $frontmatter.title %}`.
-In this example these variables are used to dynamically set the metadata of the page. By using the [`generateMetaData`](https://beta.nextjs.org/docs/api-reference/metadata#generatemetadata:~:text=and%20layouts.-,generateMetadata,-You%20can%20use) method and gray-matter to retrieve the variables from the markdown file.
+In this example these variables are used to dynamically set the metadata of the page. By using the [`generateMetaData`](https://beta.nextjs.org/docs/api-reference/metadata#generatemetadata:~:text=and%20layouts.-,generateMetadata,-You%20can%20use) method and [gray-matter](https://www.npmjs.com/package/gray-matter) to retrieve the variables from the markdown file.
 
 ### Static generation
-The method [`generateStaticParams`](https://beta.nextjs.org/docs/api-reference/generate-static-params) is used to statically generate the routes at build time. Using [`Glob`](https://www.npmjs.com/package/glob) to search for all the possible routes by scanning the markdown files in the folder specified in the `ARTICLES_PATH` variable. Exporting the variable [`dynamicParams`](https://beta.nextjs.org/docs/api-reference/segment-config#dynamicparams:~:text=upgrade%20guide.-,dynamicParams,-Control%20what%20happens) inside `[slug]/page.tsx` determines if the page tries to dynamically tries to render a page when it was not statically created at build time if the value is **TRUE**, and redirects the user to the 404 page when the value is **FALSE**.
+The method [`generateStaticParams`](https://beta.nextjs.org/docs/api-reference/generate-static-params) is used to statically generate the routes at build time. Using [Glob](https://www.npmjs.com/package/glob) to search for all the possible routes by scanning the markdown files in the folder specified in the `ARTICLES_PATH` variable. Exporting the variable [`dynamicParams`](https://beta.nextjs.org/docs/api-reference/segment-config#dynamicparams:~:text=upgrade%20guide.-,dynamicParams,-Control%20what%20happens) inside `[slug]/page.tsx` determines if the page tries to dynamically tries to render a page when it was not statically created at build time if the value is **TRUE**, and redirects the user to the 404 page when the value is **FALSE**.
 
 ## Learn More
 
