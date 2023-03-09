@@ -46,4 +46,4 @@ The method [generateStaticParams](https://beta.nextjs.org/docs/api-reference/gen
 
 To learn more about Markdoc, take a look at the following resources:
 
-- [Markdoc Documentation](https://markdoc.dev/docs/overview) - learn about Next.js features and API.
+- [Markdoc Documentation](https://markdoc.dev/docs/overview)
