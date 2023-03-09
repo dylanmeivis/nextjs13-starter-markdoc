@@ -36,7 +36,7 @@ On the top of your markdown file you can define frontmatter variables.
 title: TitleVariable
 ---
 ```
-These can be used inside your content by referencing them like `{% $frontmatter.title %}.
+These can be used inside your content by referencing them like `{% $frontmatter.title %}`.
 In this example these variables are used to dynamically set the metadata of the page. By using the [`generateMetaData` method](https://beta.nextjs.org/docs/api-reference/metadata#generatemetadata:~:text=and%20layouts.-,generateMetadata,-You%20can%20use) and gray-matter to retrieve the variables from the markdown file.
 
 ### Static generation
