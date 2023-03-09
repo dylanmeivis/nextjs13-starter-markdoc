@@ -14,6 +14,8 @@ pnpm dev
 
 Open [http://localhost:3000/blog/firstpost](http://localhost:3000/blog/firstpost) with your browser to see the result.
 
+### Folder structure
+
 The `app/blog/(articles)` directory is mapped to `/blog/*`. Markdown files in this directory are treated as pages.
 
 So simply add a markdown file in `app/blog/(articles)` and start writing your content.
